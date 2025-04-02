@@ -1,0 +1,19 @@
+flowchart LR
+    Start([Start]) --> Input["Get filename from user"]
+    Input --> OpenFile{"Try to open file"}
+    OpenFile -->|"File exists"| Read["Read file content"]
+    OpenFile -->|"File not found"| Error1["Show error:
+    File not found"]
+    Read --> Write["Write to new file"]
+    Write --> Success["Show success message"]
+    Error1 --> End([End])
+    Success --> End
+
+    classDef process fill:#a8d5ff,stroke:#333,color:#000
+    classDef decision fill:#ffe6cc,stroke:#333,color:#000
+    classDef io fill:#d5ffa8,stroke:#333,color:#000
+    classDef start_end fill:#ffafcc,stroke:#333,color:#000
+
+    class Input,Read,Write,Error1,Success io
+    class OpenFile decision
+    class Start,End start_end
